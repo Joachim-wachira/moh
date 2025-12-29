@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Moh - 2025 to 2026</title>
+    <style>
+        /* --- CSS STYLES --- */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap');
+
+        :root {
+            --primary-pink: #ff9a9e;
+            --soft-pink: #670404;
+            --deep-rose: #4bae19;
+            --text-dark: #1dc8f2;
+            --glass: rgba(20, 21, 20, 0.85);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(120deg, #a18cd1 0%, #fbc2eb 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--text-dark);
+            padding-bottom: 50px;
+        }
+
+        /* Floating Hearts Animation Background */
+        .bg-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -100px;
+            color: rgba(89, 15, 5, 0.809);
+            animation: floatUp 10s linear infinite;
+            font-size: 3rem;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- LANDING OVERLAY --- */
+        #welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, var(--soft-pink), var(--primary-pink));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s ease;
+        }
+
+        #welcome-screen h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: rgb(251, 210, 6);
+            text-shadow: 2px 2px 4px rgba(10, 12, 150, 0.885);
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .enter-btn {
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            background: rgba(235, 240, 173, 0.974);
+            color: var(--primary-pink);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 15px 20px rgba(36, 16, 190, 0.851);
+            font-family: 'Dancing Script', cursive;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .enter-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 25px rgba(255, 105, 180, 0.4);
+        }
+
+        /* --- MAIN CONTENT --- */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            opacity: 0; 
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            text-align: center;
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0px rgba(120, 248, 8, 0.79);
+        }
+
+        /* Animated Nickname Styling */
+        .nickname-container {
+            text-align: center;
+            font-size: 2.2rem;
+            font-family: 'Dancing Script', cursive;
+            color: white;
+            margin-bottom: 40px;
+            min-height: 50px; 
+            text-shadow: 2px 2px 0px rgba(120, 248, 8, 0.79);
+        }
+        
+        #nickname-text {
+            color: #fff;
+            text-shadow: 2px 2px 0px rgba(120, 248, 8, 0.79);
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .card {
+            background: var(--glass);
+            background-color: #3912c7;
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            text-align: center;
+        }
+
+        .quote-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            line-height: 1.6;
+            color: #e5d1d1;
+        }
+
+        .highlight {
+            color: var(--deep-rose);
+            font-weight: 600;
+        }
+
+        /* --- THE TWO IMAGE FRAMES --- */
+        .gallery-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            flex-wrap: wrap; /* Wraps on mobile */
+        }
+
+        .photo-frame {
+            background: rgb(7, 241, 11);
+            padding: 15px 15px 40px 15px; /* Extra bottom padding for polaroid look */
+            border-radius: 5px;
+            width: 300px;
+            height: 350px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        /* Tilted Look */
+        #frame-1 { transform: rotate(-3deg); }
+        #frame-2 { transform: rotate(3deg); }
+
+        .photo-frame:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            z-index: 10;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 2px;
+            transition: opacity 0.5s ease-in-out; /* Smooth fade effect */
+        }
+
+        .pin {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+            z-index: 20;
+        }
+        .pin::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle at 30% 30%, #ff6b6b, #c92a2a);
+            border-radius: 50%;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        /* Music Player Controls */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 100;
+            font-size: 1.5rem;
+            transition: transform 0.2s;
+        }
+        .music-control:hover { transform: scale(1.1); }
+
+        footer {
+            text-align: center;
+            color: white;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-hearts" id="heartsContainer"></div>
+
+    <audio id="bg-music" loop>
+        <source src="your-song.mp3" type="audio/mpeg"> 
+        <source src="/videos/video1.mp4" type="audio/mpeg">
+    </audio>
+
+    <div id="welcome-screen">
+        <h1>For You Lovely Moh 💖</h1>
+        <button class="enter-btn" onclick="startExperience()">Open Your Gift</button>
+    </div>
+
+    <div class="container" id="main-content">
+        
+        <h2>Goodbye 2025, Hello 2026!</h2>
+        
+        <div class="nickname-container">
+            Happy new year to <span id="nickname-text">Moh</span>
+        </div>
+
+        <div class="card">
+            <p class="quote-text">
+                "Looking back at 2025, the brightest highlight was undoubtedly <span class="highlight">our friendship</span>. 
+                Thank you for being the shoulder I could lean on and the laughter in my chaotic days."
+            </p>
+        </div>
+
+        <div class="gallery-container">
+            <div class="photo-frame" id="frame-1">
+                <div class="pin"></div>
+                <img id="img-slot-1" src="/images/image1.jpeg" alt="Memory with Moh">
+            </div>
+
+            <div class="photo-frame" id="frame-2">
+                <div class="pin"></div>
+                <img id="img-slot-2" src="/images/image2.jpeg" alt="Memory with Moh">
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>To My Favorite Human ✨</h3>
+            <p class="quote-text">
+                <br>
+                Thank you, Moh, for being my friend throughout 2025. Your kindness, laughter, and presence made the year brighter and warmer. I’m grateful for every moment, every smile, and every memory we shared.
+
+                As 2026 begins, I wish you endless happiness, success, peace, love, and beautiful surprises. May your dreams grow wings and your heart always feel safe and cherished.
+                
+                Always yours — my pumpkin 🍂, my love 💖, my squirrel 🐿️
+                <br><br>
+                Let's make more memories, my Sweetheart!"
+            </p>
+        </div>
+
+        <footer>
+            Made with love for Moh 💝 <br>Goodbye 2025 • Hello 2026 ✨
+        </footer>
+
+    </div>
+
+    <div class="music-control" onclick="toggleMusic()" style="display:none;" id="music-btn">
+        🎵
+    </div>
+
+    <script>
+        // --- CONFIGURATION ---
+        const totalImages = 13; // We have image1.jpeg to image13.jpeg
+        
+        // --- HEARTS ANIMATION ---
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            for (let i = 0; i < 35; i++) {
+                let heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 3 + 7 + 's'; 
+                heart.style.fontSize = Math.random() * 1 + 1 + 'rem';
+                container.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        // --- NICKNAME ROTATOR ---
+        const nicknames = ["Moh 💖", "My Pumpkin 🎃", "My Squirrel 🐿️", "My Sweetheart 💝"];
+        let nicknameIndex = 0;
+        const nicknameElement = document.getElementById('nickname-text');
+
+        function changeNickname() {
+            nicknameElement.style.opacity = 0;
+            setTimeout(() => {
+                nicknameIndex = (nicknameIndex + 1) % nicknames.length;
+                nicknameElement.innerHTML = nicknames[nicknameIndex];
+                nicknameElement.style.opacity = 1;
+            }, 500);
+        }
+
+        // --- IMAGE SWAPPING LOGIC ---
+        // Create an array of all image filenames: ['image1.png', 'image2.png' ... 'image25.png']
+        const allImages = [];
+        for(let i=1; i<=totalImages; i++) {
+            allImages.push(`/images/image${i}.jpeg`);
+        }
+
+        function getRandomImage() {
+            const randomIndex = Math.floor(Math.random() * allImages.length);
+            return allImages[randomIndex];
+        }
+
+        function swapImage(imgElementId) {
+            const imgEl = document.getElementById(imgElementId);
+            
+            // 1. Fade out
+            imgEl.style.opacity = 0;
+
+            // 2. Change Source after fade out (500ms)
+            setTimeout(() => {
+                let newImg = getRandomImage();
+                // Optional: Prevent picking the exact same image currently shown
+                // But with 25 images, collision is rare.
+                imgEl.src = newImg;
+                
+                // 3. Fade in
+                imgEl.style.opacity = 1;
+            }, 500);
+        }
+
+        // --- START EXPERIENCE ---
+        function startExperience() {
+            const overlay = document.getElementById('welcome-screen');
+            const content = document.getElementById('main-content');
+            const audio = document.getElementById('bg-music');
+            const musicBtn = document.getElementById('music-btn');
+
+            // Try to play audio
+            audio.volume = 0.5;
+            audio.play().catch(e => console.log("Audio play failed", e));
+
+            overlay.style.opacity = '0';
+            
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+                musicBtn.style.display = 'block';
+
+                // Start Nickname Cycle
+                setInterval(changeNickname, 3000);
+
+                // Start Image Swapping
+                // Swap Left Image every 4 seconds
+                setInterval(() => swapImage('img-slot-1'), 4000);
+                
+                // Swap Right Image every 4 seconds (offset by 2s so they don't swap at same time)
+                setTimeout(() => {
+                    setInterval(() => swapImage('img-slot-2'), 4000);
+                }, 2000);
+
+            }, 1000);
+        }
+
+        function toggleMusic() {
+            const audio = document.getElementById('bg-music');
+            if (audio.paused) audio.play();
+            else audio.pause();
+        }
+    </script>
+</body>
+</html>
